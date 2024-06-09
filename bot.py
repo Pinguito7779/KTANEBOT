@@ -166,7 +166,7 @@ def solveButton():
     elif int(NUMBAT) > 1 and text.lower() == 'detonate':
         print("Press and immediately release the button.")
         return
-    elif color.lower() == "w" and litCar:
+    elif color.lower() == "w" and litCAR:
         holdButton()
     elif int(NUMBAT) > 2 and litFRK:
         print("Press and immediately release the button.")
@@ -292,23 +292,110 @@ def solveKeypad(): #------------------------------------------KEYPAD------------
                     break
 
 def solveMemory():
-    memory = []
+    labels = []
+    positions = []
 
-    stage1 = input("Input display number followed by all the button labels in order: ")
-
-    if int(stage1[0]) == 1:
-        memory.append(stage1[2] + "2")
-        print("Press " + stage1[2]) 
-    elif int(stage1[0]) == 2:
-        memory.append(stage1[2] + "2")
+    stage1 = str(input("Input the display number followed by all of the buttons from left to right: "))
+    if stage1[0] == "1":
+        positions.append("2")
+        labels.append(stage1[2])
         print("Press " + stage1[2])
-    elif int(stage1[0]) == 3:
-        memory.append(stage1[3] + "3")
+
+    elif stage1[0] == "2":
+        positions.append("2")
+        labels.append(stage1[2])
+        print("Press " + stage1[2])
+
+    elif stage1[0] == "3":
+        positions.append("3")
+        labels.append(stage1[3])
         print("Press " + stage1[3])
-    elif int(stage1[0]) == 4:
-        memory.append(stage1[4] + "4")
+
+    elif stage1[0] == "4":
+        positions.append("4")
+        labels.append(stage1[4])
         print("Press " + stage1[4])
 
+    stage2 = str(input("Input the display number followed by all of the buttons from left to right: "))
+
+    if stage2[0] == "1":
+        position = str(input("Press 4 and input it's position: "))
+        positions.append(position)
+        labels.append("4")
+
+    elif stage2[0] == "2":
+        position = positions[0]
+        positions.append(position)
+        labels.append(stage2[int(position)])
+        print("Press " + stage2[int(position)])
+
+    elif stage2[0] == "3":
+        positions.append("1")
+        labels.append(stage2[1])
+        print("Press " + stage2[1])
+
+    elif stage2[0] == "4":
+        position = positions[0]
+        positions.append(position)
+        labels.append(stage2[int(position)])
+        print("Press " + stage2[int(position)])
+
+    stage3 = str(input("Input the display number followed by all of the button from left to right: "))
+
+    if stage3[0] == "1":
+        label = labels[1]
+        position = input("Press " + labels[1] + " and input it's position: ")
+        positions.append(position)
+
+    elif stage3[0] == "2":
+        label = labels[0]
+        position = input("Press " + labels[0] + " and input it's position: ")
+        positions.append(position)
+
+    elif stage3[0] == "3":
+        labels.append(stage3[3])
+        positions.append("3")
+        print("Press " + stage3[3])
+
+    elif stage3[0] == "4":
+        labels.append("4")
+        position = input("Press 4 and input it's position: ")
+        positions.append(position)
+
+    stage4 = str(input("Input the display number followed by all of the buttons from left to right: "))
+
+    if stage4[0] == "1":
+        position = positions[0]
+        labels.append(stage4[int(position)])
+        print("Press " + stage4[int(position)])
+
+    elif stage4[0] == "2":
+        positions.append("1")
+        labels.append(stage4[1])
+        print("Press " + stage4[1])
+
+    elif stage4[0] == "3":
+        position = positions[1]
+        positions.append(position)
+        labels.append(stage4[int(position)])
+        print("Press " + stage4[int(position)])
+
+    elif stage4[0] == "4":
+        position = positions[1]
+        labels.append(stage4[int(position)])
+        print("Press " + stage4[int(position)])
+
+    stage5 = str(input("Input the display number followed by all of the buttons from left to right: "))
+
+    if stage5[0] == "1":
+        print("Press " + labels[0])
+    elif stage5[0] == "2":
+        print("Press " + labels[1])
+    elif stage5[0] == "3":
+        print("Press " + labels[3])
+    elif stage5[0] == "4":
+        print("Press " + labels[2])
+        
 
 while True:
     module = input("Input module: ")
