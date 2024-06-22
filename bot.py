@@ -1,5 +1,3 @@
-import math
-
 NUMBAT = input("Number of batteries: ")
 NUMHOLD = input("Number of battery holders: ")
 SERIAL_NUMBER = input("Serial number: ")
@@ -316,7 +314,7 @@ def solveMemory():
         labels.append(stage1[4])
         print("Press " + stage1[4])
 
-    stage2 = str(input("Input the display number followed by all of the buttons from left to right: "))
+    stage2 = input("Input the display number followed by all of the buttons from left to right: ")
 
     if stage2[0] == "1":
         position = str(input("Press 4 and input it's position: "))
@@ -395,7 +393,69 @@ def solveMemory():
         print("Press " + labels[3])
     elif stage5[0] == "4":
         print("Press " + labels[2])
-        
+       
+
+def solveSimonSays():
+    vowel0 = ["Blue", "Red", "Yellow", "Green"]
+    vowel1 = ["Yellow", "Green", "Blue", "Red"]
+    vowel2 = ["Green", "Red", "Yellow", "Blue"]
+    novowel0 = ["Blue", "Yellow", "Green", "Red"]
+    novowel1 = ["Red", "Blue", "Yellow", "Green"]
+    novowel2  = ["Yellow", "Green", "Blue", "Red"]
+
+    hasVowel = False
+    numStrikes = input("Input the number of strikes the bomb has: ")
+    done = False
+
+    for l in SERIAL_NUMBER:
+        if l.lower() == "a" or l.lower() == "e" or l.lower() == "i" or l.lower() == "o" or l.lower() == "u":
+            hasVowel = True
+    while done == False:
+        sequence = input("Input the sequence of flashes in order (r, b, g, y) / done: ")
+        if sequence.lower() == "done":
+            break
+        print("Press in the following order:\n")
+
+        if hasVowel == True:
+            if numStrikes == "0":
+                for color in sequence:
+                    if color.lower() == "r": print(vowel0[0])
+                    if color.lower() == "b": print(vowel0[1])
+                    if color.lower() == "g": print(vowel0[2])
+                    if color.lower() == "y": print(vowel0[3])
+            if numStrikes == "1":
+                for color in sequence:
+                    if color.lower() == "r": print(vowel1[0])
+                    if color.lower() == "b": print(vowel1[1])
+                    if color.lower() == "g": print(vowel1[2])
+                    if color.lower() == "y": print(vowel1[3])
+            if numStrikes == "2":
+                for color in sequence:
+                    if color.lower() == "r": print(vowel2[0])
+                    if color.lower() == "b": print(vowel2[1])
+                    if color.lower() == "g": print(vowel2[2])
+                    if color.lower() == "y": print(vowel2[3])
+
+        if hasVowel == False:
+            if numStrikes == "0":
+                for color in sequence:
+                    if color.lower() == "r": print(novowel0[0])
+                    if color.lower() == "b": print(novowel0[1])
+                    if color.lower() == "g": print(novowel0[2])
+                    if color.lower() == "y": print(novowel0[3])
+            if numStrikes == "1":
+                for color in sequence:
+                    if color.lower() == "r": print(novowel1[0])
+                    if color.lower() == "b": print(novowel1[1])
+                    if color.lower() == "g": print(novowel1[2])
+                    if color.lower() == "y": print(novowel1[3])
+            if numStrikes == "2":
+                for color in sequence:
+                    if color.lower() == "r": print(novowel2[0])
+                    if color.lower() == "b": print(novowel2[1])
+                    if color.lower() == "g": print(novowel2[2])
+                    if color.lower() == "y": print(novowel2[3])
+
 
 while True:
     module = input("Input module: ")
@@ -407,3 +467,5 @@ while True:
         solveKeypad()
     if module.lower() == "memory":
         solveMemory()
+    if module.lower() == "simon says":
+        solveSimonSays()
